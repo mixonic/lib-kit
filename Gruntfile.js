@@ -28,7 +28,6 @@ module.exports = function(grunt) {
   // Build test files
   this.registerTask('tests', 'Builds the test package', [
     'concat:deps',
-    'browserify:tests',
     'transpile:testsAmd',
     'transpile:testsCommonjs',
     'concat:amdNodeTests', // yet another hack to get es6 transpiled tests
@@ -43,8 +42,6 @@ module.exports = function(grunt) {
     'concat:amd',
     'concat:browser',
     'concat:amdNoVersion',
-    'browser:dist',
-    'browser:distNoVersion',
     'jshint',
     'uglify:browser'
   ]);
@@ -65,8 +62,7 @@ module.exports = function(grunt) {
   this.registerTask('test', [
     'build',
     'tests',
-    'mocha_phantomjs',
-    'mochaTest'
+    'testem:ci:basic'
   ]);
 
   this.registerTask('build-release', [
@@ -75,7 +71,6 @@ module.exports = function(grunt) {
     'transpile:commonjs',
     'transpile:amdNoVersion',
     'concat:browser',
-    'browser:distNoVersion',
     'concat:amdNoVersion',
     'uglify:browserNoVersion'
   ])
@@ -87,9 +82,6 @@ module.exports = function(grunt) {
   config.pkg = grunt.file.readJSON('package.json');
 
   // Load custom tasks from NPM
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-mocha-phantomjs');
-  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-yuidoc');
   grunt.loadNpmTasks('grunt-release-it');
 

@@ -1,31 +1,42 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
-  <title>lib-kit Tests</title>
-  <link rel='stylesheet' href='vendor/mocha.css' />
-</head>
-<body>
-  <div id='mocha'></div>
-  <script src='../vendor/loader.js'></script>
-  <script src='../dist/thing.amd.js'></script>
-  <script src='vendor/assert.js'></script>
-  <script src='vendor/mocha.js'></script>
-  <script>
-    mocha.setup({
-      ui: 'bdd',
-      timeout: 200
-    });
-    mocha.globals(['setTimeout']);
-  </script>
-  <script src='../tmp/tests.amd.js'></script>
-  <script>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>LibKit Tests</title>
+    <meta name='description' content=''>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    Object.keys(require.entries).filter(function(file) {
-      return /_test$/.test(file);
-    }).map(require);
+    <link rel="stylesheet" href='../bower_components/qunit/qunit/qunit.css'>
 
-    if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
-    else { mocha.globals(['setTimeout']); mocha.run(); }
-  </script>
-</body>
+    <script src='../bower_components/loader/loader.js'></script>
+    <script src='../dist/thing.amd.js'></script>
+    <script src='../bower_components/qunit/qunit/qunit.js'></script>
+    <script src='../tmp/tests.amd.js'></script>
+
+    <style>
+      #ember-testing-container {
+        position: absolute;
+        background: white;
+        bottom: 0;
+        right: 0;
+        width: 640px;
+        height: 384px;
+        overflow: auto;
+        z-index: 9999;
+        border: 1px solid #ccc;
+      }
+      #ember-testing {
+        zoom: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script>
+      require('test/test-helper');
+      require('test/test-loader');
+    </script>
+  </body>
 </html>

@@ -43,9 +43,11 @@ module.exports = {
     type: 'amd',
     expand: true,
     src: [
-      'test/test_helpers.js',
+      'test/test-helper.js',
+      'test/test-loader.js',
+      'test/helpers/*.js',
       'test/tests.js',
-      'test/**/*_test.js'
+      'test/**/*-test.js'
     ],
     dest: 'tmp/tests/amd'
   },
@@ -55,9 +57,11 @@ module.exports = {
     expand: true,
     type: 'cjs',
     src: [
-      'test/test_helpers.js',
+      'test/test-helper.js',
+      'test/test-loader.js',
+      'test/helpers/*.js',
       'test/tests.js',
-      'test/**/*_test.js'
+      'test/**/*-test.js'
     ],
     dest: 'tmp/tests/cjs'
   }

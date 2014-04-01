@@ -44,7 +44,7 @@ module.exports = {
     dest: 'tmp/tests.node.js',
     options: {
       banner: 'var assert = require("../test/vendor/assert");',
-      footer: '\n;Object.keys(require.entries).filter(function(file) { return /_test$/.test(file); }).map(require);'
+      footer: '\n;Object.keys(require.entries).filter(function(file) { return /-test$/.test(file); }).map(require);'
     }
   },
 
